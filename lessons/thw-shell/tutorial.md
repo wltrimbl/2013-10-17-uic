@@ -466,7 +466,7 @@ commands to get this data into shape. By the end we would like to:
 
 1.  Put all of the sequence data into one file called "all_data"
 
-2.  Have all of the data files in there, and ensure that every file
+2.  Have all of the data files in one folder, and ensure that every file
     has a ".fasta" extension
 
 3.  Get rid of the extraneous "NOTES" files
