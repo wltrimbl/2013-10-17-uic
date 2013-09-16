@@ -1,11 +1,28 @@
 ---
-layout: lesson
-root: ../..
-github_username: your_user_id
-bootcamp_slug: yyyy-mm-dd-site
-title: The Unix Shell
+Title: The Unix Shell
 ---
-**Based on material by Milad Fatenejad, Sasha Wood, and Radhika Khetani**
+**Based on material by Milad Fatenejad, Sasha Wood, and Radhika Khetani, edited by Emily Davenport**
+
+## Download and open lesson material:
+
+We will spend most of our time learning about the basics of the shell
+by manipulating some experimental data. To get the data for this test, you will need internet access. Just enter the
+command:
+
+    git clone https://github.com/jdblischak/2013-09-19-chicago.git
+
+Followed by:
+
+    cd 2013-09-19-chicago
+
+These 2 commands will grab all of the data needed for this workshop from the
+internet. We will talk about `git` later in the workshop.
+
+Use a browser to open the tutorial on github, located at:
+    http://github.com/jdblischak/2013-09-19-chicago
+
+Click on the directory named `lessons`, then directory named `thw-shell`, then click `tutorial.md`
+
 
 ## What is the shell and how do I access it?
 
@@ -13,11 +30,6 @@ The *shell* is a program that presents a command line interface
 which allows you to control your computer using commands entered
 with a keyboard instead of controlling graphical user interfaces
 (GUIs) with a mouse/keyboard combination.
-
-Use a browser to open the tutorial on github, located at:
-    http://github.com/{{page.github_username}}/{{page.bootcamp_slug}}
-
-Click on the directory named `shell`.
 
 A *terminal* is a program you run that gives you access to the
 shell. There are many different terminal programs that vary across
@@ -35,6 +47,8 @@ most important reasons are that:
     you will greatly expand the range of tasks you can accomplish with
     your computer. You will also be able to perform many tasks more
     efficiently.
+    
+3.	My reasons: access remote servers, repeatability, documentation
 
 The shell is just a program and there are many different shell
 programs that have been developed. The most common shell (and the one
@@ -48,28 +62,25 @@ are different. I recommend sticking with bash and learning it well.
 To open a terminal, just single click on the "Terminal" icon on the
 Desktop.
 
-## The Example: Manipulating Experimental Data Files
-
-We will spend most of our time learning about the basics of the shell
-by manipulating some experimental data from a hearing test. To get
-the data for this test, you will need internet access. Just enter the
-command:
-
-    git clone https://github.com/{{page.github_username}}/{{page.bootcamp_slug}}.git
-
-Followed by:
-
-    cd {{page.slug}}
-
-These 2 commands will grab all of the data needed for this workshop from the
-internet.
 
 ## Let's get started
+
+**Bash command cheat sheet**
+
+	COMMAND		ACTION
+	echo 		prints text to screen
+	pwd		   	prints path of current working directory 
+	ls	    	lists all files in a directory 
+	cd	     	change directory 
+	rm	    	removes file 
+	mv	     	moves files from one directory to another (or renames them) 
+	cp	     	copies files 
+
 
 One very basic command is `echo`. This command just prints text to
 the terminal. Try the command:
 
-    echo Hello, World
+	 echo Hello, World
 
 Then press enter. You should see the text "Hello, World" printed back
 to you. The echo command is useful for printing from a shell script,
@@ -78,12 +89,13 @@ to other programs.
 
 ### Moving around the file system
 
+
 Let's learn how to move around the file system using command line
 programs. This is really easy to do using a GUI (just click on
 things). Once you learn the basic commands, you'll see that it is
 really easy to do in the shell too. 
 
-First we have to know where we are. The program `pwd` (print working
+First, we have to know where we are. The program `pwd` (print working
 directory) tells you where you are sitting in the directory tree. The
 command `ls` will list the files in files in the current
 directory. Directories are often called "folders" because of how they
@@ -93,17 +105,21 @@ can contain other files or directories.
 Whenever you start up a terminal, you will start in a special
 directory called the *home* directory. Every user has their own home
 directory where they have full access to do whatever they want. For
-example, if our user ID is `swc`, the `pwd` command tells us that we
-are in the `/home/swc` directory. This is the home directory for the
-`swc` user. That is our user name. You can always find out your user
+example, my user ID is `erdavenport`, the `pwd` command tells us that we
+are in the `/Users/erdavenport` directory. This is the home directory for the
+`erdavenport` user. That is our user name. You can always find out your user
 name by entering the command `whoami`.
+
+
+
+
 
 **File Types**
 
-When you enter the `ls` command lists the contents of the current
-directory. There are several items in the home directory, notice that
-they are all colored blue. This tells us that all of these items are
-directories as opposed to files.
+When you enter the `ls -F` command lists the contents of the current
+directory. The -F flag tells the computer to list the files in a way that shows their file type. There are (probably) several items in your home directory, notice that
+many have a slash at the end. This tells us that all of these items are
+directories as opposed to files. If a file has an asterisk at the end, it is *executable*.
 
 Lets create an empty file using the `touch` command. Enter the
 command:
@@ -111,16 +127,11 @@ command:
     touch testfile
 
 Then list the contents of the directory again. You should see that a
-new entry, called `testfile`, exists. It is colored white meaning that
-it is a file, as opposed to a directory. The `touch` command just
+new entry, called `testfile`, exists. It does not have a slash at the end, showing that it is not a directory. The `touch` command just
 creates an empty file. 
 
-Some terminals will not color the directory entries in this very
-convenient way. In those terminals, use `ls -F` instead of `ls`. The
-`-F` argument modifies the results so that a slash is placed at the
-end of directories. If the file is *executable* meaning that it can be
-run like a program, then a star will be placed at the end of of the
-file name.
+Some terminals can color the directory entries in this very
+convenient way. In those terminals, use `ls -G` instead of `ls`. Now your directories, files, and executables will have different colors.
 
 You can also use the command `ls -l` to see whether items in a
 directory are files or directories. `ls -l` gives a lot more
@@ -132,31 +143,33 @@ bytes. Notice that `testfile` has a size of zero.
 Now, let's get rid of `testfile`. To remove a file, just enter the
 command:
 
-    rm testfile
+    rm -i testfile
 
-The `rm` command can be used to remove files. If you enter `ls` again,
+When prompted, type:
+	y
+
+The `rm` command can be used to remove files. The `-i` adds the "are you sure?" message.  If you enter `ls` again,
 you will see that `testfile` is gone.
 
 **Changing Directories**
 
 Now, let's move to a different directory. The command `cd` (change
 directory) is used to move around. Let's move into the
-`{{page.bootcamp_slug}}` directory. Enter the following command:
+`2013-09-19-chicago` directory that contains the shell lesson material. Enter the following command:
 
-    cd {{page.bootcamp_slug}}
+    cd 2013-09-19-chicago/lessons/thw-shell/
 
-Now use the `ls` command to see what is inside this directory. You
-will see that there is an entry which is green. This means that this
-is an executable. If you use `ls -F` you will see that this file ends
-with a star.
+Now use the `ls -F` command to see what is inside this directory. You
+will see that there is an entry which ends in a star. This means that this
+is an executable. 
 
 This directory contains all of the material for this boot camp. Now
 move to the directory containing the data for the shell tutorial:
 
-    cd shell
+    cd data
 
 If you enter the `cd` command by itself, you will return to the home
-directory. Try this, and then navigate back to the `shell`
+directory. Try this, and then navigate back to the `data`
 directory.
 
 ### Arguments
@@ -190,19 +203,23 @@ give `ls` the names of other directories to view. Navigate to the
 home directory if you are not already there. Then enter the
 command:
 
-    ls {{page.bootcamp_slug}}
+	ls
 
-This will list the contents of the `{{page.bootcamp_slug}}` directory without
+This shows you the contents of your current directory (which should be your home directory). Now type:
+
+    ls 2013-09-19-chicago
+
+This will list the contents of the `2013-09-19-chicago` directory without
 you having to navigate there. Now enter:
 
-    ls {{page.bootcamp_slug}}/shell
+    ls 2013-09-19-chicago/lessons/thw-shell
 
-This prints the contents of `shell`. The `cd` command works in a
+This prints the contents of `thw-shell`. The `cd` command works in a
 similar way. Try entering:
 
-    cd {{page.bootcamp_slug}}/shell
+    cd 2013-09-19-chicago/lessons/thw-shell
 
-and you will jump directly to `shell` without having to go through
+and you will jump directly to `thw-shell` without having to go through
 the intermediate directory.
 
 ### Full vs. Relative Paths
@@ -212,29 +229,29 @@ name. Directories can be specified using either a *relative* path a
 full *path*. The directories on the computer are arranged into a
 hierarchy. The absolute path tells you where a directory is in that
 hierarchy. Navigate to the home directory. Now, enter the `pwd`
-command and you should see:
+command and you should see something like:
 
-    /home/swc
+    /Users/erdavenport
 
 which is the full name of your home directory. This tells you that you
-are in a directory called `swc`, which sits inside a directory called
-`home` which sits inside the very top directory in the hierarchy. The
+are in a directory called `erdavenport`, which sits inside a directory called
+`Users` which sits inside the very top directory in the hierarchy. The
 very top of the hierarchy is a directory called `/` which is usually
-referred to as the *root directory*. So, to summarize: `swc` is a
-directory in `home` which is a directory in `/`.
+referred to as the *root directory*. So, to summarize: `erdavenport` is a
+directory in `Users` which is a directory in `/`.
 
-Now enter the following command:
+Now enter the following command but replace `/Users/erdavenport/' with your home directory:
 
-    cd /home/swc/{{page.bootcamp_slug}}/shell
+    cd /Users/erdavenport/2013-09-19-chicago/lessons/thw-shell
 
-This jumps to `shell`. Now go back to the home directory. We saw
+This jumps to `thw-shell`. Now go back to the home directory. We saw
 earlier that the command:
 
-    cd {{page.bootcamp_slug}}/shell
+    cd 2013-09-19-chicago/lessons/thw-shell
 
-had the same effect - it took us to the `shell` directory. But,
+had the same effect - it took us to the `thw-shell` directory. But,
 instead of specifying the absolute path
-(`/home/swc/{{page.bootcamp_slug}}/shell`), we specified a *relative
+(`/Users/erdavenport/2013-09-19-chicago/lessons/thw-shell`), we specified a *relative
 path*. In other words, we specified the path relative to our current
 directory. A absolute path always starts with a `/`. A relative path does
 not. You can usually use either a absolute path or a relative path
@@ -251,7 +268,7 @@ familiar in there?
 
 There are some shortcuts which you should know about. Dealing with the
 home directory is very common. So, in the shell the tilde character,
-`~`, is a shortcut for your home directory. Navigate to the `shell`
+`~`, is a shortcut for your home directory. Navigate to the `thw-shell`
 directory, then enter the command:
 
     ls ~
@@ -262,12 +279,12 @@ above your current directory. Thus:
 
     ls ..
 
-prints the contents of the `/home/swc/{{page.bootcamp_slug}}`. You can chain
+prints the contents of the `/Users/erdavenport/2013-09-19-chicago/lessons/`. You can chain
 these together, so:
 
-    ls ../../
+    ls ../../../
 
-prints the contents of `/home/swc` which is your home
+prints the contents of `/Users/erdavenport` which is your home
 directory. Finally, the special directory `.` always refers to your
 current directory. So, `ls`, `ls .`, and `ls ././././.` all do the
 same thing, they print the contents of the current directory. This may
@@ -275,112 +292,27 @@ seem like a useless shortcut right now, but we'll see when it is
 needed in a little while.
 
 To summarize, the commands `ls ~`, `ls ~/.`, `ls ../../`, and `ls
-/home/swc` all do exactly the same thing. These shortcuts are not
+/Users/erdavenport` all do exactly the same thing. These shortcuts are not
 necessary, they are provided for your convenience.
 
-**Our data set: Cochlear Implants**
-
-A cochlear implant is a small electronic device that is surgically
-implanted in the inner ear to give deaf people a sense of
-hearing. More than a quarter of a million people have them, but there
-is still no widely-accepted benchmark to measure their effectiveness.
-In order to establish a baseline for such a benchmark, our supervisor
-got teenagers with CIs to listen to audio files on their computer and
-report:
-
-1.  the quietest sound they could hear
-2.  the lowest and highest tones they could hear
-3.  the narrowest range of frequencies they could discriminate
-
-To participate, subjects attended our laboratory and one of our lab
-techs played an audio sample, and recorded their data - when they
-first heard the sound, or first heard a difference in the sound.  Each
-set of test results were written out to a text file, one set per file.
-Each participant has a unique subject ID, and a made-up subject name.
-Each experiment has a unique experiment ID. The experiment has
-collected 351 files so far.
-
-The data is a bit of a mess! There are inconsistent file names, there
-are extraneous "NOTES" files that we'd like to get rid of, and the
-data is spread across many directories. We are going to use shell
-commands to get this data into shape. By the end we would like to:
-
-1.  Put all of the data into one directory called "alldata"
-
-2.  Have all of the data files in there, and ensure that every file
-    has a ".txt" extension
-
-3.  Get rid of the extraneous "NOTES" files
-
-If we can get through this example in the available time, we will move
-onto more advanced shell topics...
-
-**Wild cards**
-
-Navigate to the `shell/data/thomas` directory. This
-directory contains our hearing test data for Thomas. If we type `ls`,
-we will see that there are a bunch of files which are just four digit
-numbers. By default, `ls` lists all of the files in a given
-directory. The `*` character is a shortcut for "everything". Thus, if
-you enter `ls *`, you will see all of the contents of a given
-directory. Now try this command:
-
-    ls *1
-
-This lists every file that ends with a `1`. This command:
-
-    ls /usr/bin/*.sh
-
-Lists every file in `/usr/bin` that ends in the characters `.sh`. And
-this command:
-
-    ls *4*1
-
-lists every file in the current directory which contains the number
-`4`, and ends with the number `1`. There are four such files: `0241`,
-`0341`, `0431`, and `0481`. 
-
-So how does this actually work? Well...when the shell (bash) sees a
-word that contains the `*` character, it automatically looks for files
-that match the given pattern. In this case, it identified four such
-files. Then, it replaced the `*4*1` with the list of files, separated
-by spaces. In other the two commands:
-
-    ls *4*1
-    ls 0241 0341 0431 0481
-
-are exactly identical. The `ls` command cannot tell the difference
-between these two things.
-
-* * * *
-**Short Exercise**
-
-Do each of the following using a single `ls` command without
-navigating to a different directory.
-
-1.  List all of the files in `/bin` that contain the letter `a`
-2.  List all of the files in `/bin` that contain the letter `a` or the letter `b`
-3.  List all of the files in `/bin` that contain the letter `a` AND the letter `b`
-
-* * * *
 
 **Tab Completion**
 
-Navigate to the home directory. Typing out directory names can waste a
+Navigate to the `thw-shell` directory. Typing out directory names can waste a
 lot of time. When you start typing out the name of a directory, then
 hit the tab key, the shell will try to fill in the rest of the
 directory name. For example, enter:
 
-    cd S<tab>
+    cd r<tab>
 
 The shell will fill in the rest of the directory name for
-`{{page.bootcamp_slug}}`. Now enter:
+`ref`. Go back to `thw-shell` directory. Now enter:
 
-    ls 3<tab><tab>
+    ls t<tab><tab>
 
 When you hit the first tab, nothing happens. The reason is that there
-are multiple directories in the home directory which start with
-3. Thus, the shell does not know which one to fill in. When you hit
+are multiple directories in the `thw-shell` directory which start with
+t. Thus, the shell does not know which one to fill in. When you hit
 tab again, the shell will list the possible choices. 
 
 Tab completion can also fill in the names of programs. For example,
@@ -398,6 +330,7 @@ The down arrow takes your forwards in the command history.
 
 ^-R will do a reverse-search through your command history.  This
 is very useful.
+
 
 ### Which program? ##
 
@@ -433,7 +366,7 @@ shell looks for programs to run. If your program is not in this list,
 then an error is printed. The shell ONLY checks in the places listed
 in the `PATH` environment variable. 
 
-Navigate to the `shell` directory and list the contents. You will
+Navigate to the `thw-shell` directory and list the contents. You will
 notice that there is a program (executable file) called `hello` in
 this directory. Now, try to run the program by entering:
 
@@ -450,11 +383,11 @@ directory. This tells the shell to run the `hello` program which is
 located right here. So, you can run any program by entering the path
 to that program. You can run `hello` equally well by specifying:
 
-    /home/swc/{{page.bootcamp_slug}}/shell/hello
+    /home/swc/2013-09-19-chicago/lessons/thw-shell/hello
 
 Or by entering:
 
-    ../shell/hello
+    ../thw-shell/hello
 
 When there are no `/` characters, the shell assumes you want to look
 in one of the default places for the program.
@@ -480,12 +413,12 @@ is where the name comes from, `cat` is short for concatenate).
 * * * *
 **Short Exercises**
 
-1.  Print out the contents of the `shell/dictionary.txt`
+1.  Print out the contents of the `thw-shell/dictionary.txt`
     file. What does this file contain?
 
-2.  Without changing directories, (you should still be in `shell`),
+2.  Without changing directories, (you should still be in `thw-shell`),
     use one short command to print the contents of all of the files in
-    the `/home/swc/{{page.bootcamp_slug}}/shell/data/thomas` directory.
+    the `/home/swc/2013-09-19-chicago/shell/data/thomas` directory.
 
 * * * *
 
@@ -493,7 +426,7 @@ is where the name comes from, `cat` is short for concatenate).
 be annoying to use. The program, `less`, is useful for this
 case. Enter the following command:
 
-    less shell/dictionary.txt
+    less thw-shell/dictionary.txt
 
 `less` opens the file, and lets you navigate through it. The commands
 are identical to the `man` program. Use "space" to go forward and hit
@@ -521,48 +454,124 @@ in reverse while using `less`.
 
 * * * * 
 
-### Redirection
 
-Let's turn to the experimental data from the hearing tests that we
-began with. This data is located in the `shell/data`
-directory. Each subdirectory corresponds to a particular participant
-in the study. Navigate to the `bert` subdirectory in `data`.  There
-are a bunch of text files which contain experimental data
-results. Lets print them all:
+## Our data set: Sequencing Data
 
-    cat au*
+One of the file types you are likely to encounter as a biologist is a fasta file. A fasta file contains DNA sequence information in the following format. The first line starts with a `>` and is followed by some sort of identifying information. The next line is your DNA sequence. You can have as many lines of sequence in one file as you like. To learn some other tools/tricks in the shell, we will be using these files located in `/Users/erdavenport/2013-09-19-chicago/lessons/thw-shell/data/emily`. 
 
-Now enter the following command:
+The scenario: We are going to share our data with collaborators, but the data is a bit of a mess! There are inconsistent file names, there
+are extraneous "NOTES" files that we'd like to get rid of, and the
+data is spread across many directories. We are going to use shell
+commands to get this data into shape. By the end we would like to:
 
-    cat au* > ../all_data
+1.  Put all of the sequence data into one file called "all_data"
 
-This tells the shell to take the output from the `cat au*` command and
-dump it into a new file called `../all_data`. To verify that this
-worked, examine the `all_data` file. If `all_data` had already
-existed, we would overwritten it. So the `>` character tells the shell
-to take the output from what ever is on the left and dump it into the
-file on the right. The `>>` characters do almost the same thing,
-except that they will append the output to the file if it already
-exists.
+2.  Have all of the data files in there, and ensure that every file
+    has a ".fasta" extension
+
+3.  Get rid of the extraneous "NOTES" files
+
+4.	Have a summary file that lists out the number of lines in each file
+
+If we can get through this example in the available time, we will move
+onto more advanced shell topics...
 
 * * * *
 **Short Exercise**
 
-Use `>>`, to append the contents of all of the files which contain the
-number 4 in the directory:
+We should be able to do one of these tasks already:
 
-    /home/swc/{{page.bootcamp_slug}}/shell/data/gerdal
+1.  Remove the silly "NOTES" files from the `emily` directory.
 
-to the existing `all_data` file. Thus, when you are done `all_data`
-should contain all of the experiment data from Bert and any
-experimental data file from gerdal that contains the number 4.
+
+* * * *
+
+**Wild cards**
+
+Navigate to the `emily` directory. This
+directory contains our sequencing data. If we type `ls`,
+we will see that there are a bunch of files which are just four digit
+numbers, a few files called `NOTES`, and a folder called `sequencing_data`. By default, `ls` lists all of the files in a given
+directory. The `*` character is a shortcut for "everything". Thus, if
+you enter `ls *`, you will see all of the contents of a given
+directory. Now try this command:
+
+    ls *1.txt
+
+This lists every file that ends with a `1.txt`. This command:
+
+    ls /usr/bin/*.sh
+
+Lists every file in `/usr/bin` that ends in the characters `.sh`. And
+this command:
+
+    ls *9*1.txt
+
+lists every file in the current directory which contains the number
+`9`, and ends with the number `1` and the extension `.txt`. There are three such files: `3901.txt`,
+`7901.txt`, and `9901.txt`. 
+
+So how does this actually work? Well...when the shell (bash) sees a
+word that contains the `*` character, it automatically looks for files
+that match the given pattern. In this case, it identified four such
+files. Then, it replaced the `*9*1.txt` with the list of files, separated
+by spaces. In other the two commands:
+
+    ls *9*1.txt
+    ls 3901.txt 7901.txt 9901.txt
+
+are exactly identical. The `ls` command cannot tell the difference
+between these two things.
+
+* * * *
+**Short Exercise**
+
+Do each of the following using a single `ls` command without
+navigating to a different directory.
+
+1.  List all of the files in `/bin` that contain the letter `a`
+2.  List all of the files in `/bin` that contain the letter `a` or the letter `b`
+3.  List all of the files in `/bin` that contain the letter `a` AND the letter `b`
+
+* * * *
+
+
+### Redirection
+
+Let's turn to the experimental data from the sequencing experiment. This data is located in the `thw-shell/data/emily/`
+directory. Each file corresponds to the sequencing data for a particular individual in this experiment. We have two samples with similar names. The sequencing for 4490 didn't work well the first time (4490.1) so we tried re-sequencing the sample (4490.2). Let's combine the information for these two samples. 
+
+    cat 4480.*.txt
+
+We want to save that information to a file and eliminate the two other files:
+
+    cat 4480.*.txt > 4480.txt
+
+This tells the shell to take the output from the `cat 4480.*.txt` command and
+dump it into a new file called `4490.txt`. To verify that this
+worked, examine the `4480.txt` file using `less`. If `4480.txt` had already
+existed, we would overwritten it. So the `>` character tells the shell
+to take the output from what ever is on the left and dump it into the
+file on the right. The `>>` characters do almost the same thing,
+except that they will append the output to the file if it already
+exists. If you have a file `4480.txt`, eliminate the two subfiles so we don't have duplicate information: 
+	
+	rm 4480.*.txt
+
+* * * *
+**Short Exercise**
+
+Use `>`, to create a single file called `all_data` that sits in the `thw-shell/data/` directory that contains all of the sequencing data in the `emily` directory, but not including the `sequencing_data` directory.
+
+Once you have that `all_data` file created, append the sequencing .fasta files from the `sequencing_data` folder to the end of the file. 
+
 
 * * * *
 
 ### Creating, moving, copying, and removing
 
-We've created a file called `all_data` using the redirection operator
-`>`. This file is critical - it's our analysis results - so we want to
+We've created a file called `all_data` using the redirection operators
+`>` and `>>`. This file is critical - it's our analysis results - so we want to
 make copies so that the data is backed up.
 Lets copy the file using the `cp` command. The `cp`
 command backs up the file. Navigate to the `data` directory and enter:
@@ -592,6 +601,10 @@ the backup file now:
 The `mkdir` command is used to create a directory. Just enter `mkdir`
 followed by a space, then the directory name. 
 
+By default, `rm`, will NOT delete directories. You can tell `rm` to
+delete a directory using the `-r` option. Enter the following command:
+
+
 * * * *
 **Short Exercise**
 
@@ -600,54 +613,45 @@ Do the following:
 1.  Rename the `all_data_IMPORTANT` file to `all_data`.
 2.  Create a directory in the `data` directory called `foo`
 3.  Then, copy the `all_data` file into `foo`
+4.	Move all of the .fasta files from `sequencing_data` to the `emily` folder
+6.	Remove the `sequencing_data` folder.
 
 * * * *
 
-By default, `rm`, will NOT delete directories. You can tell `rm` to
-delete a directory using the `-r` option. Enter the following command:
-
-    rm -r foo
 
 ### Count the words
 
 The `wc` program (word count) counts the number of lines, words, and
-characters in one or more files. Make sure you are in the `data`
+characters in one or more files. Make sure you are in the `emily`
 directory, then enter the following command:
 
-    wc bert/* gerdal/*4*
+    wc *.txt
 
 For each of the files indicated, `wc` has printed a line with three
 numbers. The first is the number of lines in that file. The second is
 the number of words. Finally, the total number of characters is
 indicated. The final line contains this information summed over all of
-the files. Thus, there were 10445 characters in total. 
+the files. Thus, there were 287846 characters in total. 
 
-Remember that the `bert/*` and `gerdal/*4*` files were merged
+Remember that the `*.txt` and `*.fasta` files were merged
 into the `all_data` file. So, we should see that `all_data` contains
 the same number of characters:
 
-    wc all_data
+    wc ../foo/all_data
 
 Every character in the file takes up one byte of disk space. Thus, the
-size of the file in bytes should also be 10445. Let's confirm this:
+size of the file in bytes should also be 287846. Let's confirm this:
 
-    ls -l all_data
+    ls -l ../foo/all_data
 
 Remember that `ls -l` prints out detailed information about a file and
 that the fifth column is the size of the file in bytes.
 
-* * * *
-**Short Exercise**
-
-Figure out how to get `wc` to print the length of the longest line in
-`all_data`.
-
-* * * *
 
 ### The awesome power of the Pipe
 
 Suppose I wanted to only see the total number of character, words, and
-lines across the files `bert/*` and `gerdal/*4*`. I don't want to
+lines across the files `*.txt` and `*.fasta`. I don't want to
 see the individual counts, just the total. Of course, I could just do:
 
     wc all_data
@@ -660,8 +664,8 @@ more commands: `head` and `tail`. These commands print the first few,
 or last few, lines of a file, respectively. Try them out on
 `all_data`:
 
-    head all_data
-    tail all_data
+    head ../foo/all_data
+    tail ../foo/all_data
 
 The `-n` option to either of these commands can be used to print the
 first or last `n` lines of a file. To print the first/last line of the
@@ -672,12 +676,11 @@ file use:
 
 Let's turn back to the problem of printing only the total number of
 lines in a set of files without creating any temporary files. To do
-this, we want to tell the shell to take the output of the `wc bert/*
-gerdal/*4*` and send it into the `tail -n 1` command. The `|`
+this, we want to tell the shell to take the output of the `wc *` and send it into the `tail -n 1` command. The `|`
 character (called pipe) is used for this purpose. Enter the following
 command:
 
-    wc bert/* gerdal/Data0559 | tail -n 1
+    wc * | tail -n 1
 
 This will print only the total number of lines, characters, and words
 across all of these files. What is happening here? Well, `tail`, like
@@ -726,10 +729,21 @@ want to create a file which contains the following names:
 
 To do this, we need a program which allows us to create text
 files. There are many such programs, the easiest one which is
-installed on almost all systems is called `nano`. Navigate to `/tmp`
+installed on almost all systems is called `nano`. If you're on a windows machine type either:
+	
+	git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+
+That is for 64-bit Windows, or for 32-bit:
+
+	git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"Navigate to `/tmp`
+
 and enter the following command:
 
     nano toBeSorted
+
+or:
+	
+	notepad++ toBeSorted
 
 Now enter the four names as shown above. When you are done, press
 CONTROL+O to write out the file. Press enter to use the file name
@@ -749,20 +763,20 @@ name to the file, then sort it and make a new file called Sorted.
 
 * * * *
 
-Let's navigate back to `shell/data`. Enter the following command:
+Let's navigate back to `thw-shell/data`. Enter the following command:
 
-    wc bert/* | sort -k 3 -n
+    wc emily/* | sort -k 1 -n
 
 We are already familiar with what the first of these two commands
 does: it creates a list containing the number of characters, words,
-and lines in each file in the `bert` directory. This list is then
+and lines in each file in the `emily` directory. This list is then
 piped into the `sort` command, so that it can be sorted. Notice there
 are two options given to sort:
 
-1.  `-k 3`: Sort based on the third column
+1.  `-k 1`: Sort based on the first column
 2.  `-n`: Sort in numerical order as opposed to alphabetical order
 
-Notice that the files are sorted by the number of characters.
+Notice that the files are sorted by the number of lines.
 
 * * * *
 **Short Exercise**
@@ -780,42 +794,41 @@ Combine the `wc`, `sort`, `head` and `tail` commands so that only the
 
 Hint: To print the smallest file, use:
 
-    wc bert/* | sort -k 3 -n | head -n 1
+    wc emily/* | sort -k 3 -n | head -n 1
 
-***Short Exercise***
-Printing the smallest file seems pretty useful. We don't want to type
-out that long command often. Let's create a simple script, a simple
-program, to run this command. The program will look at all of the
-files in the current directory and print the information about the
-smallest one. Let's call the script `smallest`. We'll use `nano` to
-create this file. Navigate to the `data` directory, then:
+### Shell script:
+One powerful way to use shell is in the form of a shell script. Making scripts that you can rerun can make your work go faster and make it reproducible.
 
-    nano smallest
+Let's write a shell script that will take as input a directory, and then output a list of files ordered by the number of lines in each file in that directory. Navigate to the `data` directory, then:
+
+To start, type:
+
+	nano ordered_lines 
 
 Then enter the following text:
 
     #!/bin/bash
-    wc * | sort -k 3 -n | head -n 1
+    wc * | sort -k 1 -n > $1
 
-Now, `cd` into the `bert` directory and enter the command
-`../smallest`. Notice that it says permission denied. This happens
+Now, `cd` into the `emily` directory and enter the command
+`../ordered_lines emily_lines.txt`. Notice that it says permission denied. This happens
 because we haven't told the shell that this is an executable
-file. If you do `ls -l ../smallest`, it will show you the permissions on 
+file. If you do `ls -l ../ordered_lines`, it will show you the permissions on 
 the left of the listing.
 
 Enter the following commands:
 
-    chmod a+x ../smallest
-    ../smallest
+    chmod a+x ../ordered_lines
+    ../ordered_lines emily_lines.txt
 
 The `chmod` command is used to modify the permissions of a file. This
-particular command modifies the file `../smallest` by giving all users
+particular command modifies the file `../ordered_lines` by giving all users
 (notice the `a`) permission to execute (notice the `x`) the file. If
 you enter:
 
-    ls -l ../smallest
+    ls -lF ../ordered_lines
 
-You will see that the file name is green and the permissions have changed. 
+You will see that the file name has a `*` at the end and the permissions have changed. 
 Congratulations, you just created your first shell script!
 
 ## Searching files
@@ -828,15 +841,13 @@ directory. Every data file in this directory has a line which says
 discriminated. Lets list all of the ranges from the tests that bert
 conducted:
 
-    grep Range *
+    grep ">" 4480.txt
 
 * * * * 
 **Short Exercise**
 
-Create an executable script called `smallestrange` in the `data`
-directory, that is similar to the `smallest` script, but prints the
-file containing the file with the smallest Range. Use the commands
-`grep`, `sort`, and `tail` to do this.
+Create an executable script called `count_sequences` in the `data`
+directory, that is similar to the `ordered_lines` script, but prints the total number of sequences in each file along with the name of that file.
 
 * * * * 
 
@@ -893,12 +904,12 @@ require a `find` command):
 3.  Move all of the files within `data` to the `cleaneddata` directory
 
 4.  Rename all of the files to ensure that they end in `.txt` (note:
-    it is ok for the file name to end in `.txt.txt`
+    it is ok for the file name to end in `.fasta.fasta` or `.txt.fasta`
 
 Hint: If you make a mistake and need to start over just do the
 following:
 
-1.  Navigate to the `shell` directory
+1.  Navigate to the `thw-shell` directory
 
 2.  Delete the `data` directory
 
