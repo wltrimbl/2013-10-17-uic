@@ -1,4 +1,8 @@
 ---
+layout: lesson
+root: ../..
+githut_username: jdblischak
+bootcamp_slug: 2013-09-19-chicago
 Title: The Unix Shell
 ---
 **Based on material by Milad Fatenejad, Sasha Wood, and Radhika Khetani, edited by Emily Davenport**
@@ -7,19 +11,20 @@ Title: The Unix Shell
 
 We will spend most of our time learning about the basics of the shell
 by manipulating some experimental data. To get the data for this test, you will need internet access. Just enter the
-command:
+commands:
 
-    git clone https://github.com/jdblischak/2013-09-19-chicago.git
+	cd
+    git clone https://github.com/{{page.github_username}}/{{page.bootcamp_slug}}.git
 
 Followed by:
 
-    cd 2013-09-19-chicago
+    cd {{page.bootcamp_slug}}
 
 These 2 commands will grab all of the data needed for this workshop from the
 internet. We will talk about `git` later in the workshop.
 
 Use a browser to open the tutorial on github, located at:
-    http://github.com/jdblischak/2013-09-19-chicago
+    http://github.com/{{page.github_username}}/{{page.bootcamp_slug}}
 
 Click on the directory named `lessons`, then directory named `thw-shell`, then click `tutorial.md`
 
@@ -157,7 +162,7 @@ Now, let's move to a different directory. The command `cd` (change
 directory) is used to move around. Let's move into the
 `2013-09-19-chicago` directory that contains the shell lesson material. Enter the following command:
 
-    cd 2013-09-19-chicago/lessons/thw-shell/
+    cd {{page.bootcamp_slug}}/lessons/thw-shell/
 
 Now use the `ls -F` command to see what is inside this directory. You
 will see that there is an entry which ends in a star. This means that this
@@ -207,17 +212,17 @@ command:
 
 This shows you the contents of your current directory (which should be your home directory). Now type:
 
-    ls 2013-09-19-chicago
+    ls {{page.bootcamp_slug}}
 
 This will list the contents of the `2013-09-19-chicago` directory without
 you having to navigate there. Now enter:
 
-    ls 2013-09-19-chicago/lessons/thw-shell
+    ls {{page.bootcamp_slug}}/lessons/thw-shell
 
 This prints the contents of `thw-shell`. The `cd` command works in a
 similar way. Try entering:
 
-    cd 2013-09-19-chicago/lessons/thw-shell
+    cd {{page.bootcamp_slug}}/lessons/thw-shell
 
 and you will jump directly to `thw-shell` without having to go through
 the intermediate directory.
@@ -242,16 +247,16 @@ directory in `Users` which is a directory in `/`.
 
 Now enter the following command but replace `/Users/erdavenport/' with your home directory:
 
-    cd /Users/erdavenport/2013-09-19-chicago/lessons/thw-shell
+    cd /Users/erdavenport/{{page.bootcamp_slug}}/lessons/thw-shell
 
 This jumps to `thw-shell`. Now go back to the home directory. We saw
 earlier that the command:
 
-    cd 2013-09-19-chicago/lessons/thw-shell
+    cd {{page.bootcamp_slug}}/lessons/thw-shell
 
 had the same effect - it took us to the `thw-shell` directory. But,
 instead of specifying the absolute path
-(`/Users/erdavenport/2013-09-19-chicago/lessons/thw-shell`), we specified a *relative
+(`/Users/erdavenport/{{page.bootcamp_slug}}/lessons/thw-shell`), we specified a *relative
 path*. In other words, we specified the path relative to our current
 directory. A absolute path always starts with a `/`. A relative path does
 not. You can usually use either a absolute path or a relative path
@@ -279,7 +284,7 @@ above your current directory. Thus:
 
     ls ..
 
-prints the contents of the `/Users/erdavenport/2013-09-19-chicago/lessons/`. You can chain
+prints the contents of the `/Users/erdavenport/{{page.bootcamp_slug}}/lessons/`. You can chain
 these together, so:
 
     ls ../../../
@@ -383,7 +388,7 @@ directory. This tells the shell to run the `hello` program which is
 located right here. So, you can run any program by entering the path
 to that program. You can run `hello` equally well by specifying:
 
-    /home/swc/2013-09-19-chicago/lessons/thw-shell/hello
+    /Users/erdavenport/{{page.bootcamp_slug}}/lessons/thw-shell/hello
 
 Or by entering:
 
@@ -418,7 +423,7 @@ is where the name comes from, `cat` is short for concatenate).
 
 2.  Without changing directories, (you should still be in `thw-shell`),
     use one short command to print the contents of all of the files in
-    the `/home/swc/2013-09-19-chicago/shell/data/thomas` directory.
+    the `/Users/erdavenport/{{page.bootcamp_slug}}/lessons/thw-shell/data/thomas` directory.
 
 * * * *
 
@@ -457,7 +462,7 @@ in reverse while using `less`.
 
 ## Our data set: Sequencing Data
 
-One of the file types you are likely to encounter as a biologist is a fasta file. A fasta file contains DNA sequence information in the following format. The first line starts with a `>` and is followed by some sort of identifying information. The next line is your DNA sequence. You can have as many lines of sequence in one file as you like. To learn some other tools/tricks in the shell, we will be using these files located in `/Users/erdavenport/2013-09-19-chicago/lessons/thw-shell/data/emily`. 
+One of the file types you are likely to encounter as a biologist is a fasta file. A fasta file contains DNA sequence information in the following format. The first line starts with a `>` and is followed by some sort of identifying information. The next line is your DNA sequence. You can have as many lines of sequence in one file as you like. To learn some other tools/tricks in the shell, we will be using these files located in `/Users/erdavenport/{{page.bootcamp_slug}}/lessons/thw-shell/data/emily`. 
 
 The scenario: We are going to share our data with collaborators, but the data is a bit of a mess! There are inconsistent file names, there
 are extraneous "NOTES" files that we'd like to get rid of, and the
