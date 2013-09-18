@@ -1,7 +1,7 @@
 ---
 layout: lesson
 root: ../..
-githut_username: jdblischak
+github_username: jdblischak
 bootcamp_slug: 2013-09-19-chicago
 Title: The Unix Shell
 ---
@@ -22,11 +22,6 @@ Followed by:
 
 These 2 commands will grab all of the data needed for this workshop from the
 internet. We will talk about `git` later in the workshop.
-
-Use a browser to open the tutorial on github, located at:
-    http://github.com/{{page.github_username}}/{{page.bootcamp_slug}}
-
-Click on the directory named `lessons`, then directory named `thw-shell`, then click `tutorial.md`
 
 
 ## What is the shell and how do I access it?
@@ -734,21 +729,9 @@ want to create a file which contains the following names:
 
 To do this, we need a program which allows us to create text
 files. There are many such programs, the easiest one which is
-installed on almost all systems is called `nano`. If you're on a windows machine type either:
-	
-	git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
-
-That is for 64-bit Windows, or for 32-bit:
-
-	git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"Navigate to `/tmp`
-
-and enter the following command:
+installed on almost all systems is called `nano`.Enter the following command:
 
     nano toBeSorted
-
-or:
-	
-	notepad++ toBeSorted
 
 Now enter the four names as shown above. When you are done, press
 CONTROL+O to write out the file. Press enter to use the file name
