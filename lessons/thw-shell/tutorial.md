@@ -57,7 +57,7 @@ not the default shell, it is usually installed on most systems and can be
 started by typing `bash` in the terminal. Many commands, especially a
 lot of the basic ones, work across the various shells but many things
 are different. I recommend sticking with bash and learning it well.
-([Here is a link for more information](http://en.wikipedia.org/wiki/Bash_(Unix_shell))
+([Here is a link for more information](http://en.wikipedia.org/wiki/Bash_%28Unix_shell%29))
 
 To open a terminal, just single click on the "Terminal" icon on the
 Desktop.
@@ -593,7 +593,7 @@ important, let's rename it:
 
     mv all_data all_data_IMPORTANT
 
-Now the file name has been changed to all_data_IMPORTANT. Let's delete
+Now the file name has been changed to `all_data_IMPORTANT`. Let's delete
 the backup file now:
 
     rm /tmp/all_data_backup
