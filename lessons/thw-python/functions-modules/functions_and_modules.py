@@ -2,7 +2,7 @@
 # John Blischak
 # jdblischak@gmail.com
 
-# Short Exercise: Calculate GC content of DNA
+#Short Exercise: Calculate GC content of DNA
 # Calculate the fraction of G's and C's in this DNA sequence
 seq1 = 'ACGTACGTAGCTAGTAGCTACGTAGCTACGTA'
 gc = float(seq1.count('G') + seq1.count('C')) / len(seq1)
