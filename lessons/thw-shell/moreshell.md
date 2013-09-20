@@ -1,3 +1,11 @@
+---
+layout: lesson
+root: ../..
+github_username: jdblischak
+bootcamp_slug: 2013-09-19-chicago
+Title: Data processing example
+---
+
 # Title: A bit more shell
 
 ## Download and open lesson material:
