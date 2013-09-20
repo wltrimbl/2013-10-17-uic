@@ -11,11 +11,15 @@ Open your terminal or Gitbash.
 
 Concepts: 	curl - to download data from the internet and redirection using ">"
 
+We have a few other files called process-index2.py, process-index3.py, process-index4.py. Please load these files using the same commands. 
+
 ## Let's move and copy the data:
 Let's move the data into the repo directory. This is what we would do if it were really our project: we'd have a folder named "Future Nature Paper" and place our data in it, rather than clogging up our home directory. The command `mv` moves the data:
 
 	mv process-index.py ~/2013-09-19-chicago/
 	mv Metahit_index.txt ~/2013-09-19-chicago/
+	
+Move the other three python scripts we downloaded to the same directory.
 	
 Another thing `mv` can do is change the name of a file. For instance, if you wanted to rename your data you could type:
 
