@@ -352,4 +352,23 @@ Lists are mutable, and therefore cannot.
 
 When you architect software in python, most data will end up looking either
 like a list or a dictionary. These two data types are very important in
-python and you'll end up using them all the time.
+python and you'll end up using them all the time.  
+
+Here's a cheat sheet.
+
+    mylist = ["0th", "1st", "2nd"]  # define a list
+    mylist.append("3rd")            # add one element to the end
+    mylist.extend( [ "4th", "5th", "6rd" ] )   # add a list of elements
+    mylist[6] = "6th"               # change existing elements 
+    print mylist[0]                 # access is by index
+
+    mytup  = ("Monty", "Python")    # define a tuple 
+    print mytup[1]                  # access is by index, can't change 
+
+    mydict = {"zero":0, "one":1, "two":2, "half": 0.5 }  # define a dict
+    mydict["three"] = 3             # add elements by assigning them
+    mydict.keys()                   # returns list of keys
+    mydict["half"]                  # access is by key
+
+    myset = set(["NW", "NE", "SE", "SW"])  # create a set from a list
+    print "N" in myset              # test for membership
