@@ -1,1 +1,1 @@
-This GitHub repository contains the lesson and website files. To obtain lesson files, navigate to the `lessons` directory. Follow this [link](http://jdblischak.github.io/2013-09-19-chicago/) to the bootcamp website.
+This GitHub repository contains the lesson and website files. To obtain lesson files, navigate to the `lessons` directory. Follow this [link](http://jdblischak.github.io/2013-10-17-uic/) to the bootcamp website.
