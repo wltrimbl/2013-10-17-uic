@@ -76,12 +76,12 @@ repository.
 
 Step 3 : 
 
-    $ git remote add upstream https://github.com/{{page.bootcamp_username}}/{{page.bootcamp_slug}}.git
+    $ git remote add upstream https://github.com/{{page.github_username}}/{{page.bootcamp_slug}}.git
     $ git remote -v
     origin  https://github.com/YOU/{{page.bootcamp_slug}}.git (fetch)
     origin  https://github.com/YOU/{{page.bootcamp_slug}}.git (push)
-    upstream        https://github.com/{{page.bootcamp_username}}/{{page.bootcamp_slug}}.git (fetch)
-    upstream        https://github.com/{{page.bootcamp_username}}/{{page.bootcamp_slug}}.git (push)
+    upstream        https://github.com/{{page.github_username}}/{{page.bootcamp_slug}}.git (fetch)
+    upstream        https://github.com/{{page.github_username}}/{{page.bootcamp_slug}}.git (push)
     $
 
 All repositories that are clones begin with a remote called origin.
@@ -109,7 +109,7 @@ repository, it is necessary to also merge.
 ## git merge : Merging the contents of a remote
 
 To incorporate upstream changes from the original master repository (in
-this case {{page.bootcamp_username}}/{{page.bootcamp_slug}}) into your local working copy, you
+this case {{page.github_username}}/{{page.bootcamp_slug}}) into your local working copy, you
 must both fetch and merge. The process of merging may result in
 conflicts, so pay attention. This is where version control is both at
 its most powerful and its most complicated.
