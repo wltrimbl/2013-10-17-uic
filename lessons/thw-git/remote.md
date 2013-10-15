@@ -2,6 +2,9 @@
 layout: lesson
 root: ../..
 title: "Version Control With Git: Using Remote Repositories"
+github_username: jdblischak
+bootcamp_slug: 2013-10-17-uic
+testrepo_slug: testrepo-2013-10-17-uic
 ---
 ## github.com?
 
@@ -48,7 +51,7 @@ fork, others that may be **parallel** to your fork, and so on.
 
 ### Exercise : Fork Our GitHub Repository
 
-In step 1, you will make a copy "fork" of our test repository TESTREPO 
+In step 1, you will make a copy "fork" of our test repository {{page.bootcamp_slug}}
 on github.  This gives you a copy of this repository that you control.
 
 In step 2, you will make a copy of **your** fork of the repository on your 
@@ -59,26 +62,26 @@ your fork on github, there is another github repository (called "upstream")
 that you might want to get updates from.
 
 Step 1 : Go to our
-[repository](https://github.com/USERNAME/TESTREPO)
+[repository](https://github.com/{{page.bootcamp_username}}/{{page.bootcamp_slug}})
 from your browser, and click on the Fork button. Choose to fork it to your
 username rather than any organizations.
 
 Step 2 : Clone it. From your terminal :
 
-    $ git clone https://github.com/YOU/TESTREPO.git
-    $ cd TESTREPO
+    $ git clone https://github.com/YOU/{{page.bootcamp_slug}}.git
+    $ cd {{page.bootcamp_slug}}
 Note: YOU is a placeholder for YOUR github username.  If git asks you for 
 a password here, it probably means you have mis-typed the url for the 
 repository. 
 
 Step 3 : 
 
-    $ git remote add upstream https://github.com/USERNAME/TESTREPO.git
+    $ git remote add upstream https://github.com/{{page.bootcamp_username}}/{{page.bootcamp_slug}}.git
     $ git remote -v
-    origin  https://github.com/YOU/TESTREPO.git (fetch)
-    origin  https://github.com/YOU/TESTREPO.git (push)
-    upstream        https://github.com/USERNAME/TESTREPO.git (fetch)
-    upstream        https://github.com/USERNAME/TESTREPO.git (push)
+    origin  https://github.com/YOU/{{page.bootcamp_slug}}.git (fetch)
+    origin  https://github.com/YOU/{{page.bootcamp_slug}}.git (push)
+    upstream        https://github.com/{{page.bootcamp_username}}/{{page.bootcamp_slug}}.git (fetch)
+    upstream        https://github.com/{{page.bootcamp_username}}/{{page.bootcamp_slug}}.git (push)
     $
 
 All repositories that are clones begin with a remote called origin.
@@ -87,13 +90,13 @@ All repositories that are clones begin with a remote called origin.
 The **git remote add** merely defines a nickname and a location that 
 git will be able to communicate with for making copies of your 
 repository.  "origin" and "upstream" are nicknames for your fork of 
-TESTREPO and the "original" TESTREPO, respectively.
+{{page.bootcamp_slug}} and the "original" {{page.bootcamp_slug}}, respectively.
 
 ## git fetch : Fetching the contents of a remote
 
 Now that you have alerted your repository to the presence of others, it
 is able to pull in updates from those repositories. In this case, if you
-want your master branch to track updates in the original TESTREPO
+want your master branch to track updates in the original {{page.bootcamp_slug}}
 repository, you simply **git fetch** that repository into the master
 branch of your current repository.
 
@@ -106,7 +109,7 @@ repository, it is necessary to also merge.
 ## git merge : Merging the contents of a remote
 
 To incorporate upstream changes from the original master repository (in
-this case USERNAME/TESTREPO) into your local working copy, you
+this case {{page.bootcamp_username}}/{{page.bootcamp_slug}}) into your local working copy, you
 must both fetch and merge. The process of merging may result in
 conflicts, so pay attention. This is where version control is both at
 its most powerful and its most complicated.
@@ -182,10 +185,10 @@ There is now a hierarchy of git repositories.  There was the upstream
 repository that you can't write to, there is your fork of that repository
 that you have updated, and there is the local copy on your hard drive.
 
-In the TESTREPO code, you'll find a file called Readme.md. This is a
+In the {{page.bootcamp_slug}} code, you'll find a file called Readme.md. This is a
 standard documentation file that appears rendered on the landing page
 for the repository in github. To see the rendered version, visit your
-fork on github, (https://github.com/YOU/TESTREPO/Readme.md).
+fork on github, (https://github.com/YOU/{{page.bootcamp_slug}}/Readme.md).
 
 ## github pull requests 
 
@@ -310,7 +313,7 @@ alterations,
     Compressing objects: 100% (6/6), done.
     Writing objects: 100% (6/6), 762 bytes, done.
     Total 6 (delta 2), reused 0 (delta 0)
-    To git@github.com:username/TESTREPO.git
+    To git@github.com:username/{{page.bootcamp_slug}}.git
 
 ## synchronizing 
 Now that lots of us created files and put in pull requests,
