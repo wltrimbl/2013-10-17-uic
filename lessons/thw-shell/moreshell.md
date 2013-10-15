@@ -2,7 +2,7 @@
 layout: lesson
 root: ../..
 github_username: jdblischak
-bootcamp_slug: 2013-09-19-chicago
+bootcamp_slug: 2013-10-17-uic
 Title: Data processing example
 ---
 
@@ -24,8 +24,8 @@ We have a few other files called process-metahit2.py, process-metahit3.py, proce
 ## Let's move and copy the data:
 Let's move the data into the repo directory. This is what we would do if it were really our project: we'd have a folder named "Future Nature Paper" and place our data in it, rather than clogging up our home directory. The command `mv` moves the data:
 
-	mv process-index.py ~/2013-09-19-chicago/
-	mv Metahit_index.txt ~/2013-09-19-chicago/
+	mv process-index.py ~/{{page.bootcamp_slug}}
+	mv Metahit_index.txt ~/{{page.bootcamp_slug}}
 	
 Move the other three python scripts we downloaded to the same directory.
 	
