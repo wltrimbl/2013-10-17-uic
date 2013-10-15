@@ -17,9 +17,9 @@ Open your terminal or Gitbash.
 	curl http://giladlab.uchicago.edu/data/process-index.py > process-index.py
 	curl http://giladlab.uchicago.edu/data/Metahit_index.txt > Metahit_index.txt
 
-Concepts: 	curl - to download data from the internet and redirection using ">"
+## What's going on?
 
-We have a few other files called process-index2.py, process-index3.py, process-index4.py. Please load these files using the same commands. 
+We have a few other files called process-metahit2.py, process-metahit3.py, process-metahit4.py. Please load these files using the same commands. 
 
 ## Let's move and copy the data:
 Let's move the data into the repo directory. This is what we would do if it were really our project: we'd have a folder named "Future Nature Paper" and place our data in it, rather than clogging up our home directory. The command `mv` moves the data:
