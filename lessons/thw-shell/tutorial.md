@@ -2,7 +2,7 @@
 layout: lesson
 root: ../..
 github_username: jdblischak
-bootcamp_slug: 2013-09-19-chicago
+bootcamp_slug: 2013-10-17-uic
 Title: The Unix Shell
 ---
 **Based on material by Milad Fatenejad, Sasha Wood, and Radhika Khetani, edited by Emily Davenport**
@@ -155,7 +155,7 @@ you will see that `testfile` is gone.
 
 Now, let's move to a different directory. The command `cd` (change
 directory) is used to move around. Let's move into the
-`2013-09-19-chicago` directory that contains the shell lesson material. Enter the following command:
+`{{page.bootcamp_slug}}` directory that contains the shell lesson material. Enter the following command:
 
     cd {{page.bootcamp_slug}}/lessons/thw-shell/
 
@@ -209,7 +209,7 @@ This shows you the contents of your current directory (which should be your home
 
     ls {{page.bootcamp_slug}}
 
-This will list the contents of the `2013-09-19-chicago` directory without
+This will list the contents of the `{{page.bootcamp_slug}}` directory without
 you having to navigate there. Now enter:
 
     ls {{page.bootcamp_slug}}/lessons/thw-shell
