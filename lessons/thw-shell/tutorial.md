@@ -3,6 +3,7 @@ layout: lesson
 root: ../..
 github_username: jdblischak
 bootcamp_slug: 2013-10-17-uic
+username_slug: microbe
 Title: The Unix Shell
 ---
 **Based on material by Milad Fatenejad, Sasha Wood, and Radhika Khetani, edited by Emily Davenport**
@@ -105,9 +106,9 @@ can contain other files or directories.
 Whenever you start up a terminal, you will start in a special
 directory called the *home* directory. Every user has their own home
 directory where they have full access to do whatever they want. For
-example, my user ID is `microbe`, the `pwd` command tells us that we
-are in the `/Users/microbe` directory. This is the home directory for the
-`microbe` user. That is our user name. You can always find out your user
+example, my user ID is `{{page.username_slug}}`, the `pwd` command tells us that we
+are in the `/Users/{{page.username_slug}}` directory. This is the home directory for the
+`{{page.username_slug}}` user. That is our user name. You can always find out your user
 name by entering the command `whoami`.
 
 
@@ -231,18 +232,18 @@ hierarchy. The absolute path tells you where a directory is in that
 hierarchy. Navigate to the home directory. Now, enter the `pwd`
 command and you should see something like:
 
-    /Users/microbe
+    /Users/{{page.username_slug}}
 
 which is the full name of your home directory. This tells you that you
-are in a directory called `microbe`, which sits inside a directory called
+are in a directory called `{{page.username_slug}}`, which sits inside a directory called
 `Users` which sits inside the very top directory in the hierarchy. The
 very top of the hierarchy is a directory called `/` which is usually
-referred to as the *root directory*. So, to summarize: `microbe` is a
+referred to as the *root directory*. So, to summarize: `{{page.username_slug}}` is a
 directory in `Users` which is a directory in `/`.
 
-Now enter the following command but replace `/Users/microbe/' with your home directory:
+Now enter the following command but replace `/Users/{{page.username_slug}}/' with your home directory:
 
-    cd /Users/microbe/{{page.bootcamp_slug}}/lessons/thw-shell
+    cd /Users/{{page.username_slug}}/{{page.bootcamp_slug}}/lessons/thw-shell
 
 This jumps to `thw-shell`. Now go back to the home directory. We saw
 earlier that the command:
@@ -251,7 +252,7 @@ earlier that the command:
 
 had the same effect - it took us to the `thw-shell` directory. But,
 instead of specifying the absolute path
-(`/Users/microbe/{{page.bootcamp_slug}}/lessons/thw-shell`), we specified a *relative
+(`/Users/{{page.username_slug}}/{{page.bootcamp_slug}}/lessons/thw-shell`), we specified a *relative
 path*. In other words, we specified the path relative to our current
 directory. A absolute path always starts with a `/`. A relative path does
 not. You can usually use either a absolute path or a relative path
@@ -279,12 +280,12 @@ above your current directory. Thus:
 
     ls ..
 
-prints the contents of the `/Users/microbe/{{page.bootcamp_slug}}/lessons/`. You can chain
+prints the contents of the `/Users/{{page.username_slug}}/{{page.bootcamp_slug}}/lessons/`. You can chain
 these together, so:
 
     ls ../../../
 
-prints the contents of `/Users/microbe` which is your home
+prints the contents of `/Users/{{page.username_slug}}` which is your home
 directory. Finally, the special directory `.` always refers to your
 current directory. So, `ls`, `ls .`, and `ls ././././.` all do the
 same thing, they print the contents of the current directory. This may
@@ -292,7 +293,7 @@ seem like a useless shortcut right now, but we'll see when it is
 needed in a little while.
 
 To summarize, the commands `ls ~`, `ls ~/.`, `ls ../../`, and `ls
-/Users/microbe` all do exactly the same thing. These shortcuts are not
+/Users/{{page.username_slug}}` all do exactly the same thing. These shortcuts are not
 necessary, they are provided for your convenience.
 
 
@@ -457,7 +458,7 @@ in reverse while using `less`.
 
 ## Our data set: Sequencing Data
 
-One of the file types you are likely to encounter as a biologist is a fasta file. A fasta file contains DNA sequence information in the following format. The first line starts with a `>` and is followed by some sort of identifying information. The next line is your DNA sequence. You can have as many lines of sequence in one file as you like. To learn some other tools/tricks in the shell, we will be using these files located in `/Users/microbe/{{page.bootcamp_slug}}/lessons/thw-shell/data/emily`. 
+One of the file types you are likely to encounter as a biologist is a fasta file. A fasta file contains DNA sequence information in the following format. The first line starts with a `>` and is followed by some sort of identifying information. The next line is your DNA sequence. You can have as many lines of sequence in one file as you like. To learn some other tools/tricks in the shell, we will be using these files located in `/Users/{{page.username_slug}}/{{page.bootcamp_slug}}/lessons/thw-shell/data/emily`. 
 
 The scenario: We are going to share our data with collaborators, but the data is a bit of a mess! There are inconsistent file names, there
 are extraneous "NOTES" files that we'd like to get rid of, and the
