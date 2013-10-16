@@ -2,7 +2,7 @@
 layout: lesson
 root: ../..
 github_username: jdblischak
-bootcamp_slug: 2013-09-19-chicago
+bootcamp_slug: 2013-10-17-uic
 Title: Data processing example
 ---
 
@@ -10,22 +10,28 @@ Title: Data processing example
 
 ## Download and open lesson material:
 
-Open your terminal or Gitbash. 
+Open your terminal or Gitbash, and enter  
 
-	cd 
-	
-	curl http://giladlab.uchicago.edu/data/process-index.py > process-index.py
+	cd                    # changes to your home directory
 	curl http://giladlab.uchicago.edu/data/Metahit_index.txt > Metahit_index.txt
 
-Concepts: 	curl - to download data from the internet and redirection using ">"
+## What's going on?
 
-We have a few other files called process-index2.py, process-index3.py, process-index4.py. Please load these files using the same commands. 
+The curl command sends an HTTP request and dumps the result to standard out.  Here, we redirect the output of curl to `Metahit_index.txt`
+
+## Sanity check
+The above command *should* have downloaded a data table.  Let's check that the data are in the expected format--tab-delimeted text.
+	head Metahit_index.txt
+	4475667.3	MH0001	Denmark	female	49	25.55	N	20203603	human-associated habitat
+	4475668.3	MH0002	Denmark	female	59	27.28	N	20203603	human-associated habitat
+	...
+If this is what you see, you have the right table.  If not, you may need to troubleshoot why curl didn't give you what you were expecting.
 
 ## Let's move and copy the data:
 Let's move the data into the repo directory. This is what we would do if it were really our project: we'd have a folder named "Future Nature Paper" and place our data in it, rather than clogging up our home directory. The command `mv` moves the data:
 
-	mv process-index.py ~/2013-09-19-chicago/
-	mv Metahit_index.txt ~/2013-09-19-chicago/
+	mv process-index.py ~/{{page.bootcamp_slug}}
+	mv Metahit_index.txt ~/{{page.bootcamp_slug}}
 	
 Move the other three python scripts we downloaded to the same directory.
 	
@@ -51,7 +57,7 @@ You'll see the data has several columns:
 5. age
 6. BMI
 7. disease status
-8. I have no idea
+8. PMID of the Metahit paper
 9. sampling location
 
 Let's look at the bottom of the file using `tail`:
@@ -72,7 +78,7 @@ If we wanted to see only females:
 
 	grep female Metahit_index.txt
 	
-However, what happens if we want to see only males?
+What happens if we want to see only males?
 
 	
 ## Piping
